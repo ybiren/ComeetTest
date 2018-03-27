@@ -1,0 +1,27 @@
+﻿	.container {
+			margin-top: 20vh;
+		}
+		.container-fluid {
+			margin-top: 1vh;
+		}
+		.hdrRes {
+			color: blue;
+		}
+		.leading {
+			background-color: gold;
+		}
+		.row {
+			margin-bottom: 10px;
+		}
+		.hdr {
+			font-size: x-large;
+		  text-decoration: underline;
+		  padding-left: 0px !important;
+		}
+		.fa.fa-spinner.fa-spin {
+		  	font-size: xx-large;
+		 }
+		.hdr.hdr2 {
+			margin-bottom: 10px;
+		}
+	

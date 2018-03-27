@@ -1,0 +1,43 @@
+﻿
+<div class="container" ng-if="currtState != StateEnum.Display">
+	<div class="row" ng-if="currtState == StateEnum.Init">
+		<div class="col-sm-offset-4 col-sm-8 hdr">The best weather on earth</div>
+	</div>
+	<div class="row" ng-if="currtState == StateEnum.Init">
+		<label class="col-sm-offset-4 col-sm-2 radio-inline form-control-static"><input type="radio" name="optradio" ng-model="criteria.selectedOption" value="men" checked >For men</label>
+	</div>
+	<div class="row" ng-if="currtState == StateEnum.Init">
+		<label class="col-sm-offset-4 col-sm-2 radio-inline form-control-static"><input type="radio" name="optradio" ng-model="criteria.selectedOption" value="women">For Women</label>
+	</div>
+	<div class="row" ng-if="currtState == StateEnum.Init">
+		<button class="col-sm-offset-4 col-sm-2 form-control-static btn btn-primary" ng-click="doWeatherReq()">Display</button>
+	</div>
+	<div class="row" ng-if="currtState == StateEnum.Retrieve || currtState == StateEnum.Process || currtState == StateEnum.Error">
+		<div class="col-sm-offset-4 col-sm-4 hdr">{{getStateMsg()}}</div>
+		<div class="col-sm-4" ng-if="currtState != StateEnum.Error"><i class="fa fa-spinner fa-spin"></i></div>
+	</div>
+</div>
+
+<div class="container-fluid" ng-if="currtState == StateEnum.Display">
+  <nav class="navbar navbar-default">
+	  <ul class="nav navbar-nav">
+		  <li class="active"><a href="" ng-click="navToHomePage();">Home</a></li>
+		</ul>
+	</nav>
+	<div class;="row">
+	  <div class="col-sm-offset-2 col-sm-8 hdr hdr2">Best cities for {{criteria.selectedOption}}</div>
+	</div>
+	<div class="row hdrRes">
+	  <div class="col-sm-1 col-sm-offset-2">&nbsp;</div>
+		<div class="col-sm-3">City</div>
+		<div class="col-sm-3">Temperture</div>
+		<div class="col-sm-2">Humidity</div>
+	</div>
+	<div class="row" ng-repeat="item in sortedArr.slice(0, numResForDisp)">
+	  <div class="col-sm-1 col-sm-offset-2" ng-class="{'leading':$index===0}">{{$index + 1}}</div>
+		<div class="col-sm-3" ng-class="{'leading':$index===0}">{{item.name}}</div>
+		<div class="col-sm-3" ng-class="{'leading':$index===0}">{{item.main.temp}}&deg;C</div>
+		<div class="col-sm-2" ng-class="{'leading':$index===0}">{{item.main.humidity}}</div>
+	</div>
+</div>
+
